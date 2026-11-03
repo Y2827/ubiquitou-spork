@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.action.extension" value="action,do,html" />
+
+    <package name="default" extends="struts-default">
+        <global-results>
+            <result name="login" type="redirect">/login.jsp</result>
+            <result name="error">/error.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error" />
+        </global-exception-mappings>
+    </package>
+
+    <package name="login" namespace="/login" extends="struts-default">
+        <action name="*Login" class="com.test.dl.action.LoginAction" method="{1}">
+            <result name="success" type="redirect">/device/list.action</result>
+            <result name="input">/login.jsp</result>
+            <result name="logout" type="redirect">/login.jsp</result>
+        </action>
+    </package>
+
+    <package name="device" namespace="/device" extends="struts-default">
+        <action name="*Device" class="com.test.dl.action.DeviceAction" method="{1}">
+            <result name="list">/deviceList.jsp</result>
+            <result name="borrow">/borrow.jsp</result>
+            <result name="success" type="redirect">/device/list.action</result>
+            <result name="input">/deviceList.jsp</result>
+        </action>
+        <action name="list" class="com.test.dl.action.DeviceAction" method="list">
+            <result name="success">/deviceList.jsp</result>
+        </action>
+    </package>
+
+    <package name="borrow" namespace="/borrow" extends="struts-default">
+        <action name="*Borrow" class="com.test.dl.action.BorrowAction" method="{1}">
+            <result name="list">/myBorrows.jsp</result>
+            <result name="overdue">/overdue.jsp</result>
+            <result name="success" type="redirect">/borrow/my.action</result>
+            <result name="input">/myBorrows.jsp</result>
+        </action>
+        <action name="my" class="com.test.dl.action.BorrowAction" method="my">
+            <result name="success">/myBorrows.jsp</result>
+        </action>
+        <action name="overdueList" class="com.test.dl.action.BorrowAction" method="overdueList">
+            <result name="success">/overdue.jsp</result>
+        </action>
+    </package>
+
+    <package name="admin" namespace="/admin" extends="struts-default">
+        <action name="*Admin" class="com.test.dl.action.AdminAction" method="{1}">
+            <result name="admin">/admin.jsp</result>
+            <result name="deviceList">/adminDevice.jsp</result>
+            <result name="overdue">/overdue.jsp</result>
+            <result name="success" type="redirect">/admin/main.action</result>
+            <result name="input">/admin.jsp</result>
+        </action>
+        <action name="main" class="com.test.dl.action.AdminAction" method="main">
+            <result name="success">/admin.jsp</result>
+        </action>
+    </package>
+
+</struts>

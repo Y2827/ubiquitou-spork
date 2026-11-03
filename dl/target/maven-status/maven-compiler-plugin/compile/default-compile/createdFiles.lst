@@ -1,0 +1,14 @@
+com\test\dl\dao\BorrowDAO.class
+com\test\dl\model\User.class
+com\test\dl\action\BorrowAction.class
+com\test\dl\dao\UserDAO.class
+com\test\dl\dao\DeviceDAO.class
+com\test\dl\service\DeviceService.class
+com\test\dl\action\LoginAction.class
+com\test\dl\util\DBUtil.class
+com\test\dl\model\BorrowRecord.class
+com\test\dl\service\BorrowService.class
+com\test\dl\model\Device.class
+com\test\dl\action\AdminAction.class
+com\test\dl\service\UserService.class
+com\test\dl\action\DeviceAction.class
